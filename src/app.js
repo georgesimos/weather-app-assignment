@@ -21,33 +21,23 @@ hbs.registerPartials(partialsPath)
 app.use(express.static(publicDirectoryPath))
 
 app.get('', (req, res) => {
-    res.render('index', {
-        title: 'Weather App',
-        author: 'George Simos'
-    })
+    res.render('index')
 })
 
 app.get('/about', (req, res) => {
-    res.render('about', {
-        title: 'About Page',
-        author: 'George Simos'
-    })
+    res.render('about')
 })
 
-app.get('/help', (req, res) => {
-    res.render('help', {
-        title: 'Help Page',
-        author: 'George Simos',
-        message: 'This is my message'
-    })
+app.get('/api', (req, res) => {
+    res.render('api')
 })
 
 app.get('/weather', (req, res) => {
     if (!req.query.address) return res.send({ error: 'You must provide an address!' });
     geocode(req.query.address, (error, { longitute, latitude, location } = {}) => {
-        if (error) return res.status(500).send({ error })
+        if (error) return res.status(400).send({ error })
         forecast(longitute, latitude, (error, forecastData) => {
-            if (error) return res.status(500).send({ error })
+            if (error) return res.status(400).send({ error })
             const summary = `${forecastData.summary}.  It is currently ${forecastData.temperature} degress out. There is a ${forecastData.precipProbability}% change of rain.`
             res.status(200).send({ forecast: forecastData, summary, location, address: req.query.address })
         })

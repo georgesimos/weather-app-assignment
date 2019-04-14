@@ -1,7 +1,11 @@
+* {
+    box-sizing: border-box;
+  }
 body {
-    color: #333;
+    color:#888;
     font-family: Arial, Helvetica, sans-serif;
-    /* text-align: center; */
+    background: #fff;
+    text-align: center;
     max-width: 650px;
     margin: 0 auto;
     padding: 0 16px;
@@ -9,20 +13,43 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
+body.home {
+    color:#7160c1;
+    background: #00c9b7;
+}
+.logo {
+    width: 50px;
+    margin: 10px auto;
+}
+
+.search-icon {
+    width: 25px;
+}
 
 .main-content {
     flex-grow: 1;
 }
+.main-content-index {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 header {
     margin-top: 16px;
-    margin-bottom: 48px; 
+    margin-bottom: 5px; 
 }
 
-header a {
+nav a {
     color: #888;
     margin-right: 16px;
     text-decoration: none;
 }
+
+body.home nav a {
+    color: #7160c1;
+}
+
 
 h1 {
     font-size: 64px;
@@ -33,22 +60,70 @@ h1 {
     width: 250px;
 }
 
-input {
-    border: 1px solid #ccc;
-    padding: 8px;
+form {
+    position: relative;
+    max-width: 650px;
 }
 
+input {
+    color: #7160c1;
+    max-width: 650px;
+    font-size: 18px;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 25px 16px 21px;
+    box-shadow: 0 1px 1px rgba(187, 216, 216, 0.6), 0 3px 3px rgba(187, 216, 216, 0.4), 0 8px 16px rgba(187, 216, 216, 0.3);
+}
+
+input::placeholder {
+    color: #d5d5d5;
+    font-size: 18px;
+  }
+
 button {
+        padding: 25px 16px 21px;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    background-color: transparent;
     cursor: pointer;
-    border: 1px solid #888;
-    background: #888;
-    color: white;
-    padding: 8px;
+    border: none;
+    outline: none;
 }
 
 footer {
     color: #888;
-    border-top: 1px solid #eee;
+    border-top: 1px solid #d5d5d5;
     margin-top: 16px;
     padding: 16px 0;
+}
+
+body.home footer {
+    color: #7160c1;
+}
+
+.about-content {
+    max-width: 500px;
+    margin: 25px auto;
+    text-align: left;
+    line-height: 1.5;
+}
+.api-content {
+    max-width: 500px;
+    margin: 25px auto;
+    text-align: left;
+    line-height: 1.5;
+}
+.api-content p, .api-content li {
+    font-size: 15px;
+    color: #ccc;
+}
+
+.api-content code {
+    color: #584773;
+    padding: 10px;
+    background-color: #fafafc;
+    border-color: #e3e4e7;
 }
